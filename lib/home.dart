@@ -16,28 +16,9 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static List<Widget> pages = <Widget>[
-
-  ExploreScreen(),
+    ExploreScreen(),
     RecipesScreen(),
- GroceryScreen(),
-
-
-    // Card3(
-    //       recipe: ExploreRecipe(
-    //       title: 'Vegan Trends',
-    //               tags: [
-    //               'Healthy',
-    //               'Vegan',
-    //               'Carrots',
-    //               'Greens',
-    //               'Wheat',
-    //               'Pescetarian',
-    //               'Mint',
-    //               'Lemongrass',
-    //               'Salad',
-    //               'Water'
-    //       ],
-    //       backgroundImage: 'assets/magazine_pics/mag3.png')),
+    GroceryScreen(),
   ];
 
   void _onItemTapped(int index) {
