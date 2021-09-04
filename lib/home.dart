@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   static List<Widget> pages = <Widget>[
     ExploreScreen(),
     RecipesScreen(),
-    GroceryScreen(),
+   const GroceryScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO 9: Wrap inside a Consumer Widget
+   
     return Scaffold(
       appBar: AppBar(
         title: Text(

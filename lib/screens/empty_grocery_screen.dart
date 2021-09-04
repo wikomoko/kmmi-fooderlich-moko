@@ -38,7 +38,7 @@ class EmptyGroceryScreen extends StatelessWidget {
               ),
               color: Colors.green,
               onPressed: () {
-               Provider.of<TabManager>(context, listen: false).goToRecipes();
+                Provider.of<TabManager>(context, listen: false).goToRecipes();
               },
             ),
           ],
