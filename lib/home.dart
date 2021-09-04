@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'components/card1.dart';
-import 'components/card2.dart';
 import 'components/card3.dart';
 import 'models/explore_recipe.dart';
 import 'screens/explore_screen.dart';
 import 'screens/recipes_screen.dart';
+import 'screens/grocery_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -20,24 +19,25 @@ class _HomeState extends State<Home> {
 
   ExploreScreen(),
     RecipesScreen(),
+ GroceryScreen(),
 
 
-    Card3(
-          recipe: ExploreRecipe(
-          title: 'Vegan Trends',
-                  tags: [
-                  'Healthy',
-                  'Vegan',
-                  'Carrots',
-                  'Greens',
-                  'Wheat',
-                  'Pescetarian',
-                  'Mint',
-                  'Lemongrass',
-                  'Salad',
-                  'Water'
-          ],
-          backgroundImage: 'assets/magazine_pics/mag3.png')),
+    // Card3(
+    //       recipe: ExploreRecipe(
+    //       title: 'Vegan Trends',
+    //               tags: [
+    //               'Healthy',
+    //               'Vegan',
+    //               'Carrots',
+    //               'Greens',
+    //               'Wheat',
+    //               'Pescetarian',
+    //               'Mint',
+    //               'Lemongrass',
+    //               'Salad',
+    //               'Water'
+    //       ],
+    //       backgroundImage: 'assets/magazine_pics/mag3.png')),
   ];
 
   void _onItemTapped(int index) {
