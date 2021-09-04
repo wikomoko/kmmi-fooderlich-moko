@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
 
   google_fonts: ^2.1.0
+  provider: ^5.0.0
 
    
   # The following adds the Cupertino Icons font to your application.
@@ -55,7 +56,7 @@ flutter:
     - assets/magazine_pics/
     - assets/sample_data/
     - assets/profile_pics/
-    - assets\fooderlich_assets\empty_list.png
+    - assets/fooderlich_assets/empty_list.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'components/card3.dart';
-import 'models/explore_recipe.dart';
 import 'screens/explore_screen.dart';
 import 'screens/recipes_screen.dart';
 import 'screens/grocery_screen.dart';
