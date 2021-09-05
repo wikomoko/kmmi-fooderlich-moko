@@ -1,6 +1,6 @@
 # fooder_lich_2
 
-A new Flutter project.
+Ini adalah proyek pengembangan aplikasi dalam rangka pembelajaran FLutter Android via KMMI yang diselenggarakan pemerintah dan termasuk dalam Program Kampus Merdeka 2021
 
 ## Getting Started
 
