@@ -34,6 +34,9 @@ class _HomeState extends State<Home> {
           'Fooderlich',
           style: Theme.of(context).textTheme.headline6,
         ),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search))
+        ],
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
