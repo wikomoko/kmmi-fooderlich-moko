@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fooder_lich_2/search_history.dart';
 import 'screens/explore_screen.dart';
 import 'screens/recipes_screen.dart';
 import 'screens/grocery_screen.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'search_history.dart';
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
 
@@ -25,6 +27,8 @@ class _HomeState extends State<Home> {
     });
   }
 
+
+  
   @override
   Widget build(BuildContext context) {
    
@@ -35,7 +39,9 @@ class _HomeState extends State<Home> {
           style: Theme.of(context).textTheme.headline6,
         ),
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.search))
+          IconButton(onPressed: (){
+           showSearch(context: context, delegate: Search());
+          }, icon: Icon(Icons.search))
         ],
       ),
       body: pages[_selectedIndex],
