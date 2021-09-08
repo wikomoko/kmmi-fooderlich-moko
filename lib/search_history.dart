@@ -25,9 +25,7 @@ class Search extends SearchDelegate<String>{
        SharedPreferences pref = await SharedPreferences.getInstance();
       var a = pref.getStringList('memo');
       print(a);
-      if(a != null){
-         nama.add(a.join(','));
-      }
+      nama.insert(0, a.toString());
     
     }
 
