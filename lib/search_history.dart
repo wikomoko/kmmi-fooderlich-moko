@@ -9,24 +9,21 @@ class Search extends SearchDelegate<String>{
   List <String> isi = [];
 
 
-  // void tambah(inputan){
-  //   nama.insert(0, inputan);
-    
-  // }
-
    Future<void> tambah( masuk) async {
        SharedPreferences pref = await SharedPreferences.getInstance();
-        isi.insert(0, masuk);
+        isi.add(masuk);
         pref.setStringList('memo', isi);
        dapat(masuk);
+      print('isi $isi');
+      print('masuk : $masuk');
     }
 
      Future<void> dapat( masuk) async {
        SharedPreferences pref = await SharedPreferences.getInstance();
-      var a = pref.getStringList('memo');
+      List <String> a = pref.getStringList('memo');
       print(a);
-      nama.insert(0, a.toString());
-    
+     nama.addAll(a);
+      print(nama);
     }
 
 
