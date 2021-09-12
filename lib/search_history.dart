@@ -16,7 +16,8 @@ class Search extends SearchDelegate<String>{
 
    Future<void> tambah( masuk) async {
        SharedPreferences pref = await SharedPreferences.getInstance();
-        isi.insert(0, masuk);
+        //isi.insert(0, masuk);
+        isi.add(masuk);
         pref.setStringList('memo', isi);
        dapat(masuk);
     }
