@@ -275,9 +275,7 @@ class Digest {
 class Sub {
   Sub();
 
-  Sub.fromJson(Map<String, dynamic> json) {
-
-  }
+  Sub.fromJson(Map<String, dynamic> json);
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -289,9 +287,7 @@ class Sub {
 class TotalDaily {
   TotalDaily();
 
-  TotalDaily.fromJson(Map<String, dynamic> json) {
-
-  }
+  TotalDaily.fromJson(Map<String, dynamic> json) ;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -303,10 +299,7 @@ class TotalDaily {
 class TotalNutrients {
   TotalNutrients();
 
-  TotalNutrients.fromJson(Map<String, dynamic> json) {
-
-  }
-
+  TotalNutrients.fromJson(Map<String, dynamic> json) ;
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
 
