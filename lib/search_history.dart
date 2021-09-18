@@ -3,23 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Search extends SearchDelegate<String> {
-  List<String> nama = ['salmon'];
-  List<String> isi = [];
+  List<String> nama = [];
 
-  Future<void> tambah(masuk) async {
+  void tambah(masuk) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    isi.add(masuk);
-    pref.setStringList('memo', isi);
-    dapat(masuk);
-    print('isi $isi');
-    print('masuk : $masuk');
+    nama.insert(0, masuk);
+    pref.setStringList('memory', nama);
   }
 
-  Future<void> dapat(masuk) async {
+  void dapat() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    List<String> a = pref.getStringList('memo');
-    print(a);
-    nama.addAll(a);
+    nama.clear();
+    var getDatas = pref.getStringList('memory');
+    nama.addAll(getDatas);
     print(nama);
   }
 
@@ -52,7 +48,6 @@ class Search extends SearchDelegate<String> {
 
     if (saran.isEmpty) {
       tambah(query);
-      // print(query);
     }
 
     return ListView.builder(
@@ -68,10 +63,11 @@ class Search extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    dapat();
     final saran = nama.where((namax) {
       return namax.toString().toLowerCase().contains(query.toLowerCase());
     });
-
+    print(saran.length);
     return ListView.builder(
       itemCount: saran.length,
       itemBuilder: (context, index) {
