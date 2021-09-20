@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+import 'package:fooder_lich_2/api/getApi.dart';
+import 'package:fooder_lich_2/screens/recipeDetail.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +21,45 @@ class Search extends SearchDelegate<String> {
     nama.addAll(getDatas);
     print(nama);
   }
+
+    // cariDariHistory(String sumber){
+    //     return FutureBuilder<List<dynamic>>(
+    //                   future: datagetter().getData(query),
+    //                   builder: (context, snapshot) {
+    //                     if (snapshot.hasData) {
+    //                       return ListView.separated(
+    //                           physics: BouncingScrollPhysics(),
+    //                           separatorBuilder: (context, index) {
+    //                             return Divider();
+    //                           },
+    //                           itemCount: snapshot.data.length,
+    //                           itemBuilder: (context, index) {
+    //                             return InkWell(
+    //                               onTap: (){
+    //                                Navigator.push(context, MaterialPageRoute(
+    //                                  builder: (context){
+    //                                    return RecipeDetailPage(recipe: snapshot.data[index]['recipe']);
+    //                                  }
+    //                                ));
+    //                               print(snapshot.data[index]['recipe']);
+    //                               },
+    //                               child: ListTile(
+    //                                 leading: Image.network(
+    //                                     snapshot.data[index]['recipe']['image']),
+    //                                 title: Text(
+    //                                     snapshot.data[index]['recipe']['label']),
+    //                                 subtitle: Text(
+    //                                     snapshot.data[index]['recipe']['source']),
+    //                               ),
+    //                             );
+    //                           });
+    //                     } else {
+    //                       print("ekosng");
+    //                     }
+    //                     return CircularProgressIndicator();
+    //                   });
+    // }
+  
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -50,15 +92,50 @@ class Search extends SearchDelegate<String> {
       tambah(query);
     }
 
-    return ListView.builder(
-      itemCount: saran.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(Icons.history),
-          title: Text(saran.elementAt(index)),
-        );
-      },
-    );
+    // return ListView.builder(
+    //   itemCount: saran.length,
+    //   itemBuilder: (context, index) {
+    //     return ListTile(
+    //       leading: Icon(Icons.history),
+    //       title: Text(saran.elementAt(index)),
+    //     );
+    //   },
+    // );
+    return FutureBuilder<List<dynamic>>(
+                      future: datagetter().getData(query),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return ListView.separated(
+                              physics: BouncingScrollPhysics(),
+                              separatorBuilder: (context, index) {
+                                return Divider();
+                              },
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  onTap: (){
+                                   Navigator.push(context, MaterialPageRoute(
+                                     builder: (context){
+                                       return RecipeDetailPage(recipe: snapshot.data[index]['recipe']);
+                                     }
+                                   ));
+                                  print(snapshot.data[index]['recipe']);
+                                  },
+                                  child: ListTile(
+                                    leading: Image.network(
+                                        snapshot.data[index]['recipe']['image']),
+                                    title: Text(
+                                        snapshot.data[index]['recipe']['label']),
+                                    subtitle: Text(
+                                        snapshot.data[index]['recipe']['source']),
+                                  ),
+                                );
+                              });
+                        } else {
+                          print("ekosng");
+                        }
+                        return CircularProgressIndicator();
+                      });
   }
 
   @override
@@ -71,10 +148,16 @@ class Search extends SearchDelegate<String> {
     return ListView.builder(
       itemCount: saran.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(Icons.history),
-          title: Text(saran.elementAt(index)),
-          trailing: Icon(Icons.north_west),
+        return InkWell(
+          onTap: (){
+            //cariDariHistory(saran.elementAt(index));
+            query = saran.elementAt(index);
+          },
+          child: ListTile(
+            leading: Icon(Icons.history),
+            title: Text(saran.elementAt(index)),
+            trailing: Icon(Icons.north_west),
+          ),
         );
       },
     );
