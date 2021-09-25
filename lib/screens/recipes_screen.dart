@@ -1,28 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:fooder_lich_2/api/getApi.dart';
+import 'package:fooder_lich_2/data_from_edamame.dart';
 import 'package:fooder_lich_2/screens/recipeDetail.dart';
-// import 'package:fooder_lich_2/screens/recipeDetail.dart';
 
-
-// class RecipesScreen extends StatelessWidget {
-//   final exploreService = MockFooderlichService();
-
-//   RecipesScreen({Key key}) : super(key: key);
-//   Recipe recipe = Recipe();
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//         future: exploreService.getRecipes(),
-//         builder: (context, snapshot) {
-//           if (snapshot.connectionState == ConnectionState.done) {
-//             return RecipesGridView(recipes: snapshot.data);
-//           } else {
-//             return const Center(child: CircularProgressIndicator());
-//           }
-//         });
-//   }
-// }
 
 class RecipesScreen extends StatefulWidget {
   const RecipesScreen({ Key key }) : super(key: key);
@@ -39,12 +20,12 @@ class _RecipesScreenState extends State<RecipesScreen> {
         children: [
           Expanded(
             child: Center(
-              child: FutureBuilder<List<dynamic>>(
+              child: FutureBuilder<Food>(
                   future: datagetter().getData('salmon'),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return GridView.builder(
-                          itemCount: snapshot.data.length,
+                          itemCount: snapshot.data.hits.length,
                               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 500,
                         ),
@@ -53,10 +34,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
                               onTap: (){
                                 Navigator.push(context, MaterialPageRoute(
                                      builder: (context){
-                                       return RecipeDetailPage(recipe: snapshot.data[index]['recipe']);
+                                       return RecipeDetailPage(recipe: snapshot.data.hits[index].recipe);
                                      }
                                    ));
-                                  print(snapshot.data[index]['recipe']);
+                             //     print(snapshot.data[index]['recipe']);
                               },
                               child: Container(
                                 padding: EdgeInsets.fromLTRB(32, 16, 0, 0),          
@@ -65,21 +46,19 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                    children: [
                                      Expanded(
                                         child: ClipRRect(
-                                              child: Image.network(snapshot.data[index]['recipe']['image'],fit: BoxFit.cover),
+                                              child: Image.network(snapshot.data.hits[index].recipe.image),
                                               borderRadius: BorderRadius.circular(12),
                                             ),
                                      ),
                                       const SizedBox(height: 10),
                                       Text(
-                                             "${snapshot.data[index]['recipe']['label'] }",
+                                             "${snapshot.data.hits[index].recipe.label }",
                                               maxLines: 1,
                                               style: Theme.of(context).textTheme.bodyText1,
                                             ),
-                                      Text(
-                                           "${snapshot.data[index]['recipe']['totalTime'] }",
-                                          style: Theme.of(context).textTheme.bodyText1,
-                                        ),
-                                        Divider()
+                                     Text( "${snapshot.data.hits[index].recipe.totalTime }",
+                                              maxLines: 1,),
+                                      Divider()
                                    ],
                                  ),
                               ),
